@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="default" extends="json-default" >
+        <interceptors>
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+        </interceptors>
+        <action name="CreateContact" class="com.facilio.action.ContactData" method="CreateContact">
+            <interceptor-ref name="json" />
+            <result name="success" type="json">
+                <param name="includeProperties">status</param>
+            </result>
+        </action>
+        <action name="ListContact" class="com.facilio.action.ContactData" method="ListContact">
+            <interceptor-ref name="json" />
+            <result name="done" type="json">
+                <param name="root">
+                   lst
+                </param>
+            </result>
+        </action>
+        <action name="UpdateContact" class="com.facilio.action.ContactData" method="UpdateContact">
+            <interceptor-ref name="json" />
+            <result name="updated" type="json">
+                <param name="includeProperties">status</param>
+            </result>
+        </action>
+        <action name="DeleteContact" class="com.facilio.action.ContactData" method="DeleteContact">
+            <interceptor-ref name="json" />
+            <result name="delete" type="json">
+                <param name="includeProperties">status</param>
+            </result>
+        </action>
+    </package>
+<!--    <package name="default" extends="json-default" >-->
+<!--        <interceptors>-->
+<!--            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>-->
+<!--        </interceptors>-->
+<!--       -->
+<!--    </package>-->
+</struts>
